@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head>
+        <title >ForGentlement&Ladies. </title>
+        <meta charset="UTF-8"/> 
+        <script th:src="@{/js/rutinas.js}"></script>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    </head>
+
+<!--  -->
+
+    <body>
+        <header  th:fragment="header" class="header" style="background-color: #106669;">    
+            <h1 style="color: black; font-family:cutive;"   >ForGentlement &<br> Ladies</h1>
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+                <div>
+
+
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+
+                        <ul class="navbar-nav me-auto">
+
+                            <li class="nav-item"> 
+                                <a class="nav-link" style="color: black; font-family:cutive;" th:href="@{/categoria/new}">New</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: black; font-family:cutive;" th:href="@{/categoria/women}">Women</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: black; font-family:cutive;" th:href="@{/categoria/men}">Men</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: black; font-family:cutive;" th:href="@{/categoria/kids}">Kids</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: black; font-family:cutive;" th:href="@{/categoria/season}">Season</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </nav>
+
+
+
+
+
+
+        </header>
+
+
+
+
+        <footer th:fragment="footer" class="text-center p-3 bg-black text-white mt-5">
+            <p>ForGentlements&Ladys © 2025</p>
+        </footer>
+    </body>
+</html>
