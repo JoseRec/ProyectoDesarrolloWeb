@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Techshop</title>
+        <meta charset="UTF-8"/>      
+    </head>
+    <body>
+        <section th:fragment="tabs">
+            <div class="row p-3">
+                <ul class="nav nav-tabs justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active text-dark" 
+                           href="/pruebas/listado" 
+                           style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration: underline;">
+                            Pruebas
+                        </a>
+                    </li>
+                    <li th:each="c : ${categorias}" class="nav-item">
+                        <a class="nav-link text-dark" 
+                           th:href="@{/pruebas/listado/}+${c.idCategoria}" 
+                           style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
+                            [[${c.descripcion}]]
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section th:fragment="tarjetas">
+            <div class="container mt-5">
+                <h2 class="text-center">Lista de Productos</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4" th:each="p : ${productos}">
+                        <div class="card h-100">
+                            <img th:src="${p.rutaImagen}"
+                                 class="card-img-top"
+                                 alt="Imagen del producto"/>
+                            <div class="card-body text-center">
+                                <h5 class="card-title" th:text="${p.nombre}"></h5>
+                                <p class="card-text">Precio: $<span th:text="${p.precio}"></span></p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <form> 
+                                    <input type="hidden"
+                                           name="idProducto"
+                                           th:value='${p.idProducto}'/>
+                                    <input type="hidden"
+                                           name="existencias"
+                                           th:value='${p.existencias}'/>
+                                </form>
+                                <a th:href="@{/pruebas/producto/}+${p.idProducto}" class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="producto">
+            <div class="container mt-5">
+                <h2 class="text-center">Detalle del Producto</h2>
+                <div class="card mx-auto" style="width: 50%;">
+                    <img th:src="${producto.rutaImagen}" src="" class="card-img-top" alt="Imagen del producto"/>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${producto.nombre}"></h5>
+                        <p class="card-text" th:text="${producto.descripcion}"></p>
+                        <p class="card-text">Precio: $<span th:text="${producto.precio}"></span></p>
+                        <a href="/pruebas/listado" class="btn btn-primary">Volver a Productos</a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <form> 
+                        <input type="hidden"
+                               name="idProducto"
+                               th:value='${producto.idProducto}'/>
+                        <input type="hidden"
+                               name="existencias"
+                               th:value='${producto.existencias}'/>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
