@@ -69,6 +69,68 @@
                         <a href="/pruebas/listado" class="btn btn-primary">Volver a Productos</a>
                     </div>
                 </div>
+                <!-- Sección para mostrar las reseñas existentes -->
+                <div class="mt-4">
+                    <h3>Reseñas</h3>
+                    <div th:if="${producto.reviews != null and not #lists.isEmpty(producto.reviews)}">
+                        <div th:each="review : ${producto.reviews}" class="border p-2 mb-2">
+                            <p>
+                                <strong th:text="${review.usuario}"></strong> -
+                                <!-- Mostrar estrellas según la calificación -->
+                                <span th:utext="${'★'.repeat(review.calificacion)}"></span>
+                                <span th:utext="${'☆'.repeat(5 - review.calificacion)}"></span>
+                            </p>
+                            <p th:text="${review.comentario}"></p>
+                        </div>
+                    </div>
+                    <div th:if="${producto.reviews == null or #lists.isEmpty(producto.reviews)}">
+                        <p>No hay reseñas para este producto.</p>
+                    </div>
+                </div>
+
+                <!-- Formulario para agregar una nueva reseña -->
+                <div class="mt-4">
+                    <h3>Agrega tu reseña</h3>
+                    <form action="/reviews/agregar" method="post">
+                        <!-- Se envía el id del producto de forma oculta -->
+                        <input type="hidden" name="idProducto" th:value="${producto.idProducto}"/>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Tu nombre:</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="calificacion" class="form-label">Calificación:</label>
+                            <select id="calificacion" name="calificacion" class="form-control" required>
+                                <option value="1">1 estrella</option>
+                                <option value="2">2 estrellas</option>
+                                <option value="3">3 estrellas</option>
+                                <option value="4">4 estrellas</option>
+                                <option value="5">5 estrellas</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comentario" class="form-label">Reseña:</label>
+                            <textarea id="comentario" name="comentario" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Enviar Reseña</button>
+                    </form>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="card-footer">
                     <form> 
                         <input type="hidden"
