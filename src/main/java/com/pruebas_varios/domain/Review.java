@@ -60,10 +60,4 @@ public class Review {
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
-    
-    
-    
-    
-    
-    
 }
