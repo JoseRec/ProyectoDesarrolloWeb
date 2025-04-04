@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head>
+        <title>Prueba</title>
+        <meta charset="UTF-8"/> 
+        <script th:src="@{/js/rutinas.js}"></script>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <!-- Aqui se trabaja el header -->
+        <header th:fragment="header" class="header" style="background-color: #106669;">
+            <h1 style="color: black; font-family: cutive;">ForGentlement &<br> Ladies</h1>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-white">
+                <div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/}" 
+                                   style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
+                                    <i class="bi bi-house-door"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/pruebas/listado}" 
+                                   style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
+                                    <i class="bi bi-people"></i>Categorias
+                                </a>
+                            </li>
+                            <a class="nav-link" th:href="@{/pruebas/contacto}" 
+                               style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
+                                <i class="bi bi-people"></i>Contactanos
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section th:fragment="section">
+            <div class="container mt-4" style="max-width: 600px; margin: 0 auto;">
+                <div id="carousel" class="carousel slide">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <img src="https://i.pinimg.com/originals/6a/e9/73/6ae9735e0e10e8d9f61c9dcceed712e0.jpg" 
+                                 class="d-block w-100 carousel-image" 
+                                 alt="..." 
+                                 style="height: 300px; object-fit: cover;">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="https://th.bing.com/th/id/OIP.ktUtPjUfKURm5GJAyV26VwHaEo?rs=1&pid=ImgDetMain" 
+                                 class="d-block w-100 carousel-image" 
+                                 alt="..." 
+                                 style="height: 300px; object-fit: cover;">
+                        </div>
+
+                        <div class="carousel-item">
+                            <img src="https://th.bing.com/th/id/OIP.Nm2YpbQvu2MYi8mWJwvhMQHaEK?rs=1&pid=ImgDetMain" 
+                                 class="d-block w-100 carousel-image" 
+                                 alt="..." 
+                                 style="height: 300px; object-fit: cover;">
+                        </div>
+                    </div>
+                    <p>Estas imagenes son solo de ejemplo</p>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>   
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+        <footer th:fragment="footer" class="text-center p-3 bg-black text-white mt-5">
+            <p>ForGentlements&Ladys © 2025</p>
+        </footer>
+    </body>
+</html>
