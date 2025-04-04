@@ -34,7 +34,6 @@ public class UsuarioController {
         return "/usuario/modifica";
     }
 
-    // Guardar usuario, incluyendo la carga de una imagen (si existe)
     @PostMapping("/guardar")
     public String usuarioGuardar(Usuario usuario, 
             @RequestParam(value = "imagenFile", required = false) MultipartFile imagenFile) {

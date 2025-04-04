@@ -25,6 +25,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Season</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/pruebas/listado}">All Products</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/pruebas/contacto}">Contact us</a></li>
+
                 </ul>
 
                 <form class="d-flex me-3" role="search">
@@ -38,7 +39,20 @@
 
                 <a href="#" class="text-white me-3"><i class="bi bi-cart3 fs-4"></i></a>
 
-                <a href="#" class="text-white"><i class="bi bi-person-circle fs-4"></i></a>
+  
+                <div class="d-flex align-items-center">
+     
+                    <a class="text-white me-3" th:if="${!#authorization.expression('isAuthenticated()')}" th:href="@{/login}">
+                        <i class="bi bi-person-circle fs-4"></i>
+                    </a>
+
+              
+                    <div th:if="${#authorization.expression('isAuthenticated()')}" class="text-white me-3 d-flex align-items-center">
+                        <i class="bi bi-person-circle fs-4 me-1"></i>
+                        <span th:text="${#authentication.name}" style="font-size: 1rem;"></span>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </header>

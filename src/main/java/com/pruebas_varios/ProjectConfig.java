@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.pruebas_varios;
 
 import java.util.Locale;
@@ -86,8 +83,8 @@ public class ProjectConfig implements WebMvcConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/", "/index", "/login", "/registro/**", "/js/**", "/webjars/**").permitAll()
-                .requestMatchers("/pruebas/listado", "/pruebas/listado/1", "/pruebas/listado/2", "/pruebas/listado/3", "/pruebas/listado/4", "/pruebas/listado/5", "/pruebas/listado/6", "/pruebas/contacto").permitAll()
+                .requestMatchers("/", "/index", "/login", "/registro/**", "/js/**", "/webjars/**","/img/**").permitAll()
+                .requestMatchers("/layout/plantilla","/pruebas/listado", "/pruebas/listado/1", "/pruebas/listado/2", "/pruebas/listado/3", "/pruebas/listado/4", "/pruebas/listado/5", "/pruebas/listado/6", "/pruebas/contacto", "/reviews/agregar").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
