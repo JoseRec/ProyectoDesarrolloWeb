@@ -37,9 +37,31 @@
                                style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
                                 <i class="bi bi-people"></i>Contactanos
                             </a>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/login}" 
+                                   style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
+                                    <i class="bi bi-person-circle"></i> Iniciar sesión
+                                </a>
+                            </li>
+
+                            <!-- Mostrar usuario logueado -->
+                            <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+                                <span class="nav-link" style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
+                                    <i class="bi bi-person-circle"></i> 
+                                    <span th:text="${#authentication.name}"></span>
+                                </span>
+                            </li>
+
+
                         </ul>
+
+
                     </div>
                 </div>
+
+
             </nav>
         </header>
         <section th:fragment="section">
