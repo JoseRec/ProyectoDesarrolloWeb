@@ -48,4 +48,9 @@ public class PruebasController {
         model.addAttribute("producto", producto);
         return "pruebas/producto";
     }
+    
+     @GetMapping("/pruebas/listado")
+    public String listado() {
+        return "templates.pruebas.listado";
+    }
 }

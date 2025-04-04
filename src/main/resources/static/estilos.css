@@ -1,0 +1,11 @@
+body {
+    font-family: 'Cutive', serif; 
+}
+
+.bg-dark {
+    background-color: #004D4D !important;
+}
+
+.card {
+    border-radius: 0;
+}

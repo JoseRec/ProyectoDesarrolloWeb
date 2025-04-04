@@ -1,89 +1,108 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <title>Prueba</title>
-        <meta charset="UTF-8"/> 
-        <script th:src="@{/js/rutinas.js}"></script>
-        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <head th:fragment="head">
+        <meta charset="UTF-8">
+        <title>ForGentlemens & Ladys</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     </head>
-    <body>
-        <!-- Aqui se trabaja el header -->
-        <header th:fragment="header" class="header" style="background-color: #106669;">
-            <h1 style="color: black; font-family: cutive;">ForGentlement &<br> Ladies</h1>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-                <div>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/}" 
-                                   style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
-                                    <i class="bi bi-house-door"></i> Inicio
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/pruebas/listado}" 
-                                   style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
-                                    <i class="bi bi-people"></i>Categorias
-                                </a>
-                            </li>
-                            <a class="nav-link" th:href="@{/pruebas/contacto}" 
-                               style="color: black; font-size: 20px; font-family: Cutive, serif; padding: 10px 30px; text-decoration-line: underline;">
-                                <i class="bi bi-people"></i>Contactanos
-                            </a>
-                        </ul>
+
+    <header th:fragment="header" class="py-3" style="background-color: #0C5B5B;">
+        <nav class="container navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand fw-bold" style="font-family: 'Cutive', serif;" href="#">ForGentlemens & Ladys</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">New</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Men</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kids</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Season</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/pruebas/listado}">All Products</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/pruebas/contacto}">Contact us</a></li>
+                </ul>
+
+                <form class="d-flex me-3" role="search">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input class="form-control border-start-0" type="search" placeholder="Search" aria-label="Search">
                     </div>
+                </form>
+
+                <a href="#" class="text-white me-3"><i class="bi bi-cart3 fs-4"></i></a>
+
+                <a href="#" class="text-white"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </nav>
+    </header>
+
+
+    <section th:fragment="home" class="container py-4">
+        <div id="carouselHome" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/1.jpg" class="d-block w-100" alt="1">
                 </div>
-            </nav>
-        </header>
-        <section th:fragment="section">
-            <!-- SECCION DEL CARRSUSEL DE IMAGENES -->
-            <div class="container mt-4" style="max-width: 600px; margin: 0 auto;">
-                <div id="carousel" class="carousel slide">
-                    <div class="carousel-inner">
-
-                        <div class="carousel-item active">
-                            <img src="https://i.pinimg.com/originals/6a/e9/73/6ae9735e0e10e8d9f61c9dcceed712e0.jpg" 
-                                 class="d-block w-100 carousel-image" 
-                                 alt="..." 
-                                 style="height: 300px; object-fit: cover;">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="https://th.bing.com/th/id/OIP.ktUtPjUfKURm5GJAyV26VwHaEo?rs=1&pid=ImgDetMain" 
-                                 class="d-block w-100 carousel-image" 
-                                 alt="..." 
-                                 style="height: 300px; object-fit: cover;">
-                        </div>
-
-                        <div class="carousel-item">
-                            <img src="https://th.bing.com/th/id/OIP.Nm2YpbQvu2MYi8mWJwvhMQHaEK?rs=1&pid=ImgDetMain" 
-                                 class="d-block w-100 carousel-image" 
-                                 alt="..." 
-                                 style="height: 300px; object-fit: cover;">
-                        </div>
-                    </div>
-                    <p>Estas imagenes son solo de ejemplo</p>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>   
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-
+                <div class="carousel-item">
+                    <img src="/img/2.jpg" class="d-block w-100" alt="2">
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/3.jpg" class="d-block w-100" alt="3">
                 </div>
             </div>
-        </section>
-        <footer th:fragment="footer" class="text-center p-3 bg-black text-white mt-5">
-            <p>ForGentlements&Ladys © 2025</p>
-        </footer>
-    </body>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselHome" data-bs-slide-to="2"></button>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 mb-6">
+                <div class="card text-white bg-info h-100">
+                    <img src="/img/sales.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Promocional">
+                    <div class="card-body">
+                        <h5 class="card-title">NEW CLOTHES JUST FOR YOU - Up to 65%</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row h-60">
+                    <div class="col-md-12 mb-2 h-45">
+                        <div class="card h-70">
+                            <img src="/img/man.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Destacado">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-2 h-45">
+                        <div class="card h-70">
+                            <img src="/img/branches.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Destacado">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer th:fragment="footer" class="text-center text-white py-2" style="background-color: #0C5B5B;">
+    &copy; ForGentlemens & Ladys 2025
+</footer>
+
 </html>
