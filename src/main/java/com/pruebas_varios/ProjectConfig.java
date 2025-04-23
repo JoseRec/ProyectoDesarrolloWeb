@@ -40,11 +40,16 @@ public class ProjectConfig implements WebMvcConfigurer {
         return lci;
     }
 
-    //POR NADA DEL MUNDO BORRAR ESTA LINEA AL MENOS QUE SEPAN COMO ARREGLARLO O UN METODO MEJOR
-    //PASE POR 3 HORAS MAS INSUFRIBLES DE MI VIDA PARA VER QUE PUSO ALGO QUE NO ERA.
+//    //POR NADA DEL MUNDO BORRAR ESTA LINEA AL MENOS QUE SEPAN COMO ARREGLARLO O UN METODO MEJOR
+//    //PASE POR 3 HORAS MAS INSUFRIBLES DE MI VIDA PARA VER QUE PUSO ALGO QUE NO ERA.
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//    }
+//    
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Override
