@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Ropa para Hombres</title>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+
+    <!-- Banner masculino -->
+    <section class="container mt-4">
+        <div class="card border-0">
+            <img th:src="@{/img/banner_men.png}" class="card-img-top rounded" alt="Ropa para Hombres" style="height: 400px; object-fit: cover;">
+            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-white">
+                <h1 class="display-4">Descubre la colección masculina</h1>
+                <p class="lead">Estilo, actitud y comodidad para cada ocasión</p>
+            </div>
+        </div>
+    </section>
+
+    <section th:replace="~{pruebas/fragmentos :: tarjetas}"/>
+
+    <footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
+</html>

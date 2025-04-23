@@ -1,5 +1,5 @@
 package com.pruebas_varios.controller;
-    
+
 import com.pruebas_varios.domain.Categoria;
 import com.pruebas_varios.domain.Producto;
 import com.pruebas_varios.service.CategoriaService;
@@ -20,7 +20,7 @@ public class PruebasController {
 
     @Autowired
     private CategoriaService categoriaService;
-    
+
     @GetMapping("/listado")
     public String listado(Model model) {
         var lista = productoService.getProductos(false);
@@ -29,16 +29,16 @@ public class PruebasController {
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
-    
+
     @GetMapping("/listado/{idCategoria}")
     public String listado(Model model, Categoria categoria) {
-        categoria = categoriaService.getCategoria(categoria); 
+        categoria = categoriaService.getCategoria(categoria);
         model.addAttribute("productos", categoria.getProductos());
         var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
         return "/pruebas/listado";
     }
-    
+
     @GetMapping("/producto/{id}")
     public String detalleProducto(@PathVariable Long id, Model model) {
         Producto producto = productoService.getProductoById(id);
@@ -48,9 +48,18 @@ public class PruebasController {
         model.addAttribute("producto", producto);
         return "pruebas/producto";
     }
-    
-     @GetMapping("/pruebas/listado")
+
+    @GetMapping("/pruebas/listado")
     public String listado() {
         return "templates.pruebas.listado";
     }
+
+    @GetMapping("/women")
+    public String mostrarRopaMujer(Model model) {
+        var productos = productoService.getProductos(true);
+        productos.removeIf(p -> p.getCategoria().getIdCategoria() != 2); // Filtra solo Woman (ID 2)
+        model.addAttribute("productos", productos);
+        return "templates.pruebas/women";
+    }
+
 }

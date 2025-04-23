@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Recien llegados</title>
+</head>
+
+<body>
+    <header th:replace="~{layout/plantilla :: header}"/>
+
+    <section class="container mt-4">
+        <div class="card border-0">
+            <img th:src="@{/img/new_banner.png}" class="card-img-top rounded" alt="Recien llegado" style="height: 400px; object-fit: cover;">
+            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-white">
+            </div>
+        </div>
+    </section>
+
+    <section th:replace="~{pruebas/fragmentos :: tarjetas}"/>
+
+    <footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
+</html>

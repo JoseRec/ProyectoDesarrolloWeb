@@ -31,4 +31,9 @@ public class ProductoService {
         return productoRepository.findById(id).orElse(null);
     }
     
+    @Transactional(readOnly = true)
+    public List<Producto> getProductosPorCategoria(Long idCategoria) {
+        return productoRepository.findByCategoria_IdCategoria(idCategoria);
+    }
+    
 }

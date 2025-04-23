@@ -1,4 +1,3 @@
-
 package com.pruebas_varios;
 
 import java.util.Locale;
@@ -41,19 +40,12 @@ public class ProjectConfig implements WebMvcConfigurer {
         return lci;
     }
 
-    
-    
-    
-    
-    
-    
     //POR NADA DEL MUNDO BORRAR ESTA LINEA AL MENOS QUE SEPAN COMO ARREGLARLO O UN METODO MEJOR
     //PASE POR 3 HORAS MAS INSUFRIBLES DE MI VIDA PARA VER QUE PUSO ALGO QUE NO ERA.
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-    
 
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
@@ -83,8 +75,9 @@ public class ProjectConfig implements WebMvcConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/", "/index", "/login", "/registro/**", "/js/**", "/webjars/**","/img/**").permitAll()
-                .requestMatchers("/layout/plantilla","/pruebas/listado", "/pruebas/listado/1", "/pruebas/listado/2", "/pruebas/listado/3", "/pruebas/listado/4", "/pruebas/listado/5", "/pruebas/listado/6", "/pruebas/contacto", "/reviews/agregar").permitAll()
+                .requestMatchers("/", "/index", "/login", "/women", "/men", "/kids", "/new", "/season", "/registro/**", "/js/**", "/webjars/**", "/img/**").permitAll()
+                .requestMatchers("/pruebas/producto/**").permitAll()
+                .requestMatchers("/layout/plantilla", "/pruebas/listado", "/pruebas/listado/1", "/pruebas/listado/2", "/pruebas/listado/3", "/pruebas/listado/4", "/pruebas/listado/5", "/pruebas/listado/6", "/pruebas/contacto", "/reviews/agregar").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
