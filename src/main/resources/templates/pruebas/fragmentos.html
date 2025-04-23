@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
+        <script src="tu_archivo.js" defer></script>
         <title>Techshop</title>
         <meta charset="UTF-8"/>      
     </head>
@@ -97,7 +98,19 @@
                         <h5 class="card-title" th:text="${producto.nombre}"></h5>
                         <p class="card-text" th:text="${producto.descripcion}"></p>
                         <p class="card-text">Precio: $<span th:text="${producto.precio}"></span></p>
-                        <a href="/pruebas/listado" class="btn btn-primary">Volver a Productos</a>
+
+                        <a href="/pruebas/listado" class="btn btn-primary me-2">Volver a Productos</a>
+
+                        <!-- Formulario de agregar al carrito -->
+                        <form class="d-inline">
+                            <input type="hidden" name="idProducto" th:value="${producto.idProducto}" />
+                            <input type="hidden" name="existencias" th:value="${producto.existencias}" />
+                            <button type="button" 
+                                    onclick="addCart(this.form)" 
+                                    class="btn btn-success">
+                                <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <!-- Sección para mostrar las reseñas existentes -->
@@ -147,17 +160,8 @@
                         <button type="submit" class="btn btn-success">Enviar Reseña</button>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <form> 
-                        <input type="hidden"
-                               name="idProducto"
-                               th:value='${producto.idProducto}'/>
-                        <input type="hidden"
-                               name="existencias"
-                               th:value='${producto.existencias}'/>
-                    </form>
-                </div>
             </div>
         </section>
+        <script src="/js/rutinas.js"></script>
     </body>
 </html>
