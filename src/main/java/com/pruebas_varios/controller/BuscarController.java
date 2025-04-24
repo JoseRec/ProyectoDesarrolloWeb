@@ -27,7 +27,7 @@ public class BuscarController {
     public String buscar(@RequestParam("nombre") String nombre, Model model) {
         List<Producto> productos = productoService.buscarProductosPorNombre(nombre);
         model.addAttribute("productos", productos);
-        model.addAttribute("termino", nombre); // para mostrarlo en el título
+        model.addAttribute("termino", nombre);
         return "buscar";
     }
 
