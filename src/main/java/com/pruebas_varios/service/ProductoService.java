@@ -19,21 +19,26 @@ public class ProductoService {
 
         return lista;
     }
-    
+
     @Transactional(readOnly = true)
     public Producto getProducto(Producto producto) {
-        producto =  productoRepository.findById(producto.getIdProducto()).orElse(null);
+        producto = productoRepository.findById(producto.getIdProducto()).orElse(null);
         return producto;
     }
-    
-     @Transactional(readOnly = true)
+
+    @Transactional(readOnly = true)
     public Producto getProductoById(Long id) {
         return productoRepository.findById(id).orElse(null);
     }
-    
+
     @Transactional(readOnly = true)
     public List<Producto> getProductosPorCategoria(Long idCategoria) {
         return productoRepository.findByCategoria_IdCategoria(idCategoria);
     }
-    
+
+    @Transactional(readOnly = true)
+    public List<Producto> buscarProductosPorNombre(String nombre) {
+        return productoRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+
 }

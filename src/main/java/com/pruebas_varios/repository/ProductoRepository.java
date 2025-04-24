@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
     
-    // Consulta para obtener productos de una categoría específica
     List<Producto> findByCategoria_IdCategoria(Long idCategoria);
+    
+    List<Producto> findByNombreContainingIgnoreCase(String nombre);
+
+    
 }

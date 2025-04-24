@@ -82,6 +82,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/login", "/women", "/men", "/kids", "/new", "/season", "/registro/**", "/js/**", "/webjars/**", "/img/**").permitAll()
                 .requestMatchers("/pruebas/producto/**").permitAll()
+                .requestMatchers("/buscar", "/buscar/**").permitAll()
                 .requestMatchers("/layout/plantilla", "/pruebas/listado", "/pruebas/listado/1", "/pruebas/listado/2", "/pruebas/listado/3", "/pruebas/listado/4", "/pruebas/listado/5", "/pruebas/listado/6", "/pruebas/contacto", "/reviews/agregar").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/user/**").hasRole("USER")
@@ -90,7 +91,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 )
                 .formLogin((form) -> form
                 .loginPage("/login")
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/", true)   
                 .permitAll()
                 )
                 .logout((logout) -> logout
