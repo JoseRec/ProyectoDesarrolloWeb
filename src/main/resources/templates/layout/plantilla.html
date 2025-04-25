@@ -65,7 +65,6 @@
                         <i class="bi bi-person-circle fs-4 me-1"></i>
                         <span th:text="${#authentication.name}" style="font-size: 1rem;" class="me-2"></span>
 
-                        <!-- Botón de logout estilo ícono -->
                         <form method="post"
                               th:action="@{/logout}">
                             <button class="fa-solid fa-right-to-bracket">
@@ -111,32 +110,40 @@
         <div class="row">
 
             <div class="col-md-6 mb-6">
-                <div class="card text-white bg-info h-100">
-                    <img src="/img/sales.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Promocional">
-                    <div class="card-body">
-                        <h5 class="card-title">NEW CLOTHES JUST FOR YOU - Up to 65%</h5>
+                <a href="/women" style="text-decoration: none;">
+                    <div class="card text-white bg-info h-100">                
+                        <img src="/img/sales.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Promocional">
+                        <div class="card-body">
+                            <h5 class="card-title">NEW CLOTHES JUST FOR YOU - Up to 65%</h5>
+                        </div>
                     </div>
-                </div>
+                </a> 
             </div>
 
             <div class="col-md-6">
                 <div class="row h-60">
                     <div class="col-md-12 mb-2 h-45">
-                        <div class="card h-70">
-                            <img src="/img/man.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Destacado">
-                        </div>
+                        <a href="/men" style="text-decoration: none;">
+                            <div class="card h-70">
+                                <img src="/img/man.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Destacado">
+                            </div>
+                        </a>
                     </div>
 
                     <div class="col-md-12 mb-2 h-45">
-                        <div class="card h-70">
-                            <img src="/img/branches.jpg" class="card-img-top img-fluid h-100" style="object-fit: cover;" alt="Destacado">
-                        </div>
+                        <a href="/marca/listado" style="text-decoration: none;">
+                            <div class="card h-70">
+                                <img src="/img/branches.jpg" 
+                                     class="card-img-top img-fluid h-100" 
+                                     style="object-fit: cover;" 
+                                     alt="Destacado">
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
 </section>
 
 <footer th:fragment="footer" class="text-center text-white py-2" style="background-color: #0C5B5B;">

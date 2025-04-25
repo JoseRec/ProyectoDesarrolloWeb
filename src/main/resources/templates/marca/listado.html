@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Listado de Marcas</title>
+    </head>
+
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Marcas Registradas</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th sec:authorize="isAuthenticated()">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="marca : ${marcas}">
+                        <td th:text="${marca.idMarca}"></td>
+                        <td th:text="${marca.nombre}"></td>
+                        <td sec:authorize="isAuthenticated()">
+                            <a th:href="@{/marca/eliminar/{id}(id=${marca.idMarca})}" 
+                               class="btn btn-danger btn-sm" 
+                               onclick="return confirm('¿Estás seguro de eliminar esta marca?');">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div sec:authorize="isAuthenticated()">
+                <h3>Agregar marca</h3>
+                <form th:action="@{/marca/guardar}" method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre de la marca</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+
+            <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>

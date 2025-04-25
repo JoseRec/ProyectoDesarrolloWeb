@@ -1,0 +1,43 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.pruebas_varios.controller;
+
+/**
+ *
+ * @author leidy
+ */
+import com.pruebas_varios.domain.Marca;
+import com.pruebas_varios.service.MarcaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/marca")
+public class MarcaController {
+
+    @Autowired
+    private MarcaService marcaService;
+
+    @GetMapping("/listado")
+    public String listado(Model model) {
+        model.addAttribute("marcas", marcaService.getMarcas());
+        return "marca/listado";
+    }
+
+    @PostMapping("/guardar")
+    public String guardar(Marca marca) {
+        marcaService.save(marca);
+        return "redirect:/marca/listado";
+    }
+
+    @GetMapping("/eliminar/{idMarca}")
+    public String eliminar(@PathVariable("idMarca") Long idMarca) {
+        marcaService.delete(idMarca);
+        return "redirect:/marca/listado";
+    }
+
+}
