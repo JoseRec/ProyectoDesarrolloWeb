@@ -23,6 +23,9 @@ public class ItemService {
     //Se utiliza una variable de session para guardar una lista
     @Autowired
     private HttpSession session;
+    
+    @Autowired
+    private LogService logService;
 
     //El siguiente método crea un item en la variable de session
     //Si la variable no existe se crea
@@ -201,8 +204,7 @@ public class ItemService {
             //Se debe registrar el total de la venta en la factura
             factura.setTotal(total);
             facturaRepository.save(factura);
-
-            //Se debe limpiar el carrito la lista...
+            logService.registrarEvento("El usuario realizó una compra. Total: $" + factura.getTotal());            //Se debe limpiar el carrito la lista...
             listaItems.clear();
         }
     }

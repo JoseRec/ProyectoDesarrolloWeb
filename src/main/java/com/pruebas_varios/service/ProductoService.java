@@ -15,15 +15,12 @@ public class ProductoService {
 
     @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activos) {
-        var lista = productoRepository.findAll();
-
-        return lista;
+        return productoRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     public Producto getProducto(Producto producto) {
-        producto = productoRepository.findById(producto.getIdProducto()).orElse(null);
-        return producto;
+        return productoRepository.findById(producto.getIdProducto()).orElse(null);
     }
 
     @Transactional(readOnly = true)
@@ -41,4 +38,8 @@ public class ProductoService {
         return productoRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
+    @Transactional
+    public void save(Producto producto) {
+        productoRepository.save(producto);
+    }
 }

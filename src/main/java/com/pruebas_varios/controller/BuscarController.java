@@ -30,5 +30,6 @@ public class BuscarController {
         model.addAttribute("termino", nombre);
         return "buscar";
     }
+    
 
 }

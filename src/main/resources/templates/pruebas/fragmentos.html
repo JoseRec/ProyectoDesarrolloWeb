@@ -113,7 +113,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- Sección para mostrar las reseñas existentes -->
+
                 <div class="mt-4">
                     <h3>Reseñas</h3>
                     <div th:if="${producto.reviews != null and not #lists.isEmpty(producto.reviews)}">
@@ -134,7 +134,7 @@
                     </div>
                 </div>
 
-                <!-- Formulario para agregar una nueva reseña -->
+
                 <div class="mt-4">
                     <h3>Agrega tu reseña</h3>
                     <form action="/reviews/agregar" method="post">
